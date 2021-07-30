@@ -74,7 +74,7 @@ namespace DIO.CatalogApi.Controllers.V1 {
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{songId:guid}")]
         public async Task<ActionResult> DeleteSong([FromRoute] Guid songId) {
             try {
                 await _songService.Delete(songId);
