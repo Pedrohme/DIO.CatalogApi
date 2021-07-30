@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using DIO.CatalogApi.Exceptions;
 using DIO.CatalogApi.InputModel;
 using DIO.CatalogApi.Services;
 using DIO.CatalogApi.ViewModel;
@@ -46,7 +47,7 @@ namespace DIO.CatalogApi.Controllers.V1 {
                 var result = await _songService.Insert(song);
                 return Ok(result);
             }
-            catch (Exception) {
+            catch (SongAlreadyRegisteredException e) {
                 return UnprocessableEntity("This song has already been registered");
             }
         }
@@ -57,18 +58,18 @@ namespace DIO.CatalogApi.Controllers.V1 {
                 await _songService.Update(songId, song);
                 return Ok();
             }
-            catch (Exception) {
+            catch (SongNotRegisteredException e) {
                 return NotFound("This song doesn't exist");
             }
         }
 
-        [HttpPatch("{songId:guid}/album/{album:string}")]
+        [HttpPatch("{songId:guid}/album/{album}")]
         public async Task<ActionResult> UpdateSong([FromRoute] Guid songId, [FromRoute] string album) {
             try {
                 await _songService.Update(songId, album);
                 return Ok();
             }
-            catch (Exception) {
+            catch (SongNotRegisteredException e) {
                 return NotFound("This song doesn't exist");
             }
         }
@@ -79,7 +80,7 @@ namespace DIO.CatalogApi.Controllers.V1 {
                 await _songService.Delete(songId);
                 return Ok();
             }
-            catch (Exception) {
+            catch (SongNotRegisteredException e) {
                 return NotFound("This song doesn't exist");
             }
         }
