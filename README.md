@@ -16,7 +16,7 @@ Ao invés de criar um catálogo de jogos como o apresentado no curso, esse será
 <br />
 
 #### 🇺🇸 - EN-US
-# DIGITAL INNOVATION ONE - Creating a game (song) catalog with .NET using good architecture practices
+# DIGITAL INNOVATION ONE - Creating a song (game) catalog with .NET using good architecture practices
 
 This is a simple project made for practice purposes, and to be submitted during the Digital Innovation One [**GFT START #2 .NET**](https://web.digitalinnovation.one/track/gft-start-2-net) bootcamp.  
 Instead of creating a game catalog as presented in the course, this will be a catalog for songs.
