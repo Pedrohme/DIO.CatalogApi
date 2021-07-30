@@ -1,0 +1,7 @@
+CREATE TABLE song (
+	id UUID,
+	name VARCHAR(200) NOT NULL,
+	album VARCHAR(200) NOT NULL,
+	author VARCHAR(200) NOT NULL,
+	PRIMARY KEY (id)
+);
