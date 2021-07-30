@@ -15,9 +15,11 @@
     <None Remove="Repositories\" />
     <None Remove="Entities\" />
     <None Remove="Exceptions\" />
+    <None Remove="Npgsql" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+    <PackageReference Include="Npgsql" Version="5.0.7" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
