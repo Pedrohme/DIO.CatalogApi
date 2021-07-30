@@ -12,6 +12,9 @@
     <None Remove="InputModel\" />
     <None Remove="ViewModel\" />
     <None Remove="Services\" />
+    <None Remove="Repositories\" />
+    <None Remove="Entities\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
@@ -22,5 +25,8 @@
     <Folder Include="InputModel\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Services\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>
