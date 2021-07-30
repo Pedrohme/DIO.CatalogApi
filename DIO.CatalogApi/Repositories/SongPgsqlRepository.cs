@@ -92,7 +92,17 @@ namespace DIO.CatalogApi.Repositories {
         }
 
         public async Task Update(Song song) {
-            throw new NotImplementedException();
+            await conn.OpenAsync();
+
+            await using (var cmd = new NpgsqlCommand("UPDATE song SET name = (@m), album = (@n), author = (@o) WHERE id = (@p)", conn)) {
+                cmd.Parameters.AddWithValue("m", song.Name);
+                cmd.Parameters.AddWithValue("n", song.Album);
+                cmd.Parameters.AddWithValue("o", song.Author);
+                cmd.Parameters.AddWithValue("p", song.Id);
+                await cmd.ExecuteNonQueryAsync();
+            }
+
+            await conn.CloseAsync();
         }
 
         public void Dispose() {
