@@ -11,6 +11,7 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="InputModel\" />
     <None Remove="ViewModel\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
@@ -20,5 +21,6 @@
     <Folder Include="Controllers\V1\" />
     <Folder Include="InputModel\" />
     <Folder Include="ViewModel\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
