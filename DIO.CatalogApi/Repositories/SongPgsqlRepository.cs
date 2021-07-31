@@ -25,7 +25,28 @@ namespace DIO.CatalogApi.Repositories {
         }
 
         public async Task<List<Song>> Get(int page, int numItems) {
-            throw new NotImplementedException();
+            var songs = new List<Song>();
+
+            await conn.OpenAsync();
+
+            await using (var cmd = new NpgsqlCommand("SELECT * FROM song LIMIT (@p) OFFSET (@q)", conn)) {
+                cmd.Parameters.AddWithValue("p", numItems);
+                cmd.Parameters.AddWithValue("q", (page - 1) * numItems);
+                await using (var reader = await cmd.ExecuteReaderAsync()) {
+                    while (await reader.ReadAsync()) {
+                        songs.Add(new Song() {
+                            Id = (Guid)reader["id"],
+                            Name = (string)reader["name"],
+                            Album = (string)reader["album"],
+                            Author = (string)reader["author"]
+                        });
+                    }
+                }
+            }
+
+            await conn.CloseAsync();
+
+            return songs;
         }
 
         public async Task<Song> Get(Guid id) {
